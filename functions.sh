@@ -419,6 +419,7 @@ EOF
 
 portainerCheckFailed=0
 
+fi
 
 
   delseconds=4
