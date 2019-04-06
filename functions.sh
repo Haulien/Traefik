@@ -37,9 +37,9 @@ Delay the Traefik DNS Check for how many seconds? (Default 90)
 EOF
 
 typed2=999999999
-while [[ "$typed2" -lt "30" || "$typed2" -gt "120" ]]; do
+while [[ "$typed2" -lt "0" || "$typed2" -gt "600" ]]; do
   echo "QUITTING? Type >>> exit"
-  read -p 'Type Number Between 30 through 120 | Press [ENTER]: ' typed2 < /dev/tty
+  read -p 'Type Number Between 0 through 600 | Press [ENTER]: ' typed2 < /dev/tty
   if [[ "$typed2" == "exit" || "$typed2" == "Exit" || "$typed2" == "EXIT" ]]; then traefikstart; fi
   echo
 done
