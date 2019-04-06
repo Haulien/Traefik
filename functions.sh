@@ -402,12 +402,14 @@ NOTE 2: Subdomains will provide insecure warnings
 
 EOF
 
-  read -p 'Rebuild containers anyway? (Y/N) [ENTER]: ' typed < /dev/tty
+  read -p 'Rebuild containers anyway? [y or n]: ' typed < /dev/tty
   if [[ "$typed" = "n" || "$typed" = "N" || "$typed" = "No" || "$typed" = "no" || "$typed" = "NO" ]]; then traefikstart; fi
-    portainerCheckFailed=1
+    
+  portainerCheckFailed=1
+    
 fi
 
-if [[portainerCheckFailed == 1]] then;
+if [[portainerCheckFailed == 0]] then;
 
 tee <<-EOF
 
@@ -417,9 +419,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-portainerCheckFailed=0
 
 fi
+
+portainerCheckFailed=0
 
 
   delseconds=4
