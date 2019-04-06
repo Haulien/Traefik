@@ -405,11 +405,11 @@ EOF
   read -p 'Rebuild containers anyway? [y or n]: ' typed < /dev/tty
   if [[ "$typed" = "n" || "$typed" = "N" || "$typed" = "No" || "$typed" = "no" || "$typed" = "NO" ]]; then traefikstart; fi
     
-  portainerCheckFailed=1
+  #portainerCheckFailed=1
     
 fi
 
-if [[portainerCheckFailed == 0]] then;
+#if [[portainerCheckFailed == 0]] then;
 
 tee <<-EOF
 
@@ -420,9 +420,9 @@ tee <<-EOF
 EOF
 
 
-fi
+#fi
 
-portainerCheckFailed=0
+#portainerCheckFailed=0
 
 
   delseconds=4
