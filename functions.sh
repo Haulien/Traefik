@@ -331,7 +331,7 @@ EOF
 
 ansible-playbook /opt/coreapps/apps/portainer.yml
 
-delseconds=10
+delseconds=120
 domain=$(cat /var/plexguide/server.domain)
 
 tee <<-EOF
@@ -343,7 +343,7 @@ tee <<-EOF
 NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
 
 NOTE 2: Checking on https://portainer.${domain}'s existance.
-Please allow 10 seconds for portainer to boot up.
+Please allow [$delseconds] seconds for portainer to boot up.
 
 NOTE 3: Be aware that simple mistakes such as bad input, bad domain, or
 not knowing what your doing counts for 75% of the problems.
