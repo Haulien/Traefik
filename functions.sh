@@ -331,7 +331,7 @@ EOF
 
 ansible-playbook /opt/coreapps/apps/portainer.yml
 
-delseconds=120
+delseconds=240
 domain=$(cat /var/plexguide/server.domain)
 
 tee <<-EOF
@@ -357,7 +357,10 @@ echo -ne "StandBy - Portainer Validation Checks: $delseconds Seconds  "'\r';
 sleep 1; done
 
 touch /opt/appdata/plexguide/traefikportainer.check
-wget -q "https://portainer.${domain}" -O "/opt/appdata/plexguide/traefikportainer.check"
+wget "https://portainer.${domain}" -O "/opt/appdata/plexguide/traefikportainer.check"
+
+cat /opt/appdata/plexguide/traefikportainer.check
+
 
 # If Portainer Detection Failed
 if [[ $(cat /opt/appdata/plexguide/traefikportainer.check) == "" ]]; then
