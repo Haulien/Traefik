@@ -331,7 +331,7 @@ EOF
 
 ansible-playbook /opt/coreapps/apps/portainer.yml
 
-delseconds=240
+delseconds=120
 domain=$(cat /var/plexguide/server.domain)
 
 tee <<-EOF
@@ -399,11 +399,15 @@ SMART TIP: When fixed, rerun this process again!
 NOTE 1: Possibly unable to reach subdomains
 NOTE 2: Subdomains will provide insecure warnings
 
+
 EOF
 
-  read -p 'Try Again! Acknowledge Info | Press [ENTER] ' name < /dev/tty
-  traefikstart
+  read -p 'Rebuild containers anyway? (Y/N) [ENTER]: ' typed < /dev/tty
+  if [[ "$typed" = "n" || "$typed" = "N" || "$typed" = "No" || "$typed" = "no" || "$typed" = "NO" ]]; then traefikstart; fi
+    portainerCheckFailed=1
 fi
+
+if [[portainerCheckFailed == 1]] then;
 
 tee <<-EOF
 
@@ -412,6 +416,10 @@ tee <<-EOF
 🚀 Portainer - https://portainer.${domain} detected!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+
+portainerCheckFailed=0
+
+
 
   delseconds=4
   while [[ "$delseconds" -ge "1" ]]; do
