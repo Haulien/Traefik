@@ -42,12 +42,15 @@ entryPoint = "https"
 
 [[acme.domains]]
   main = "{{domain.stdout}}"
+  sans = ["portainer.{{domain.stdout}}", "oauth.{{domain.stdout}}", "traefik.{{domain.stdout}}"]
+
+
 #[[acme.domains]]
 #  main = "*.{{domain.stdout}}"
 
-[[acme.domains]]
-  main = "*.{{domain.stdout}}"
-  sans = ["{{domain.stdout}}"]
+#[[acme.domains]]
+#  main = "*.{{domain.stdout}}"
+#  sans = ["{{domain.stdout}}"]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
